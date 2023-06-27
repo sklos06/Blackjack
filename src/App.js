@@ -1,5 +1,10 @@
 import React from "react"
+import Board from "./Board"
 
 export default function App(){
-    return(<h1>EXAMPLE</h1>)
+    return(
+        <main>
+            <Board/>
+        </main>
+    )
 }
