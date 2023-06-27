@@ -11,13 +11,13 @@ body {
     background: #292828;
 }
 
-main {
+.board {
     display: flex;
-    width: 700px;
-    height: 800px;
-    padding: 25px 25px;
+    width: 800px;
+    height: 850px;
+    padding: 25px 0px;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     border-radius: 50px;
     background: #31842F;
@@ -32,11 +32,30 @@ main {
     letter-spacing: 12px;
     filter: blur(2.5px);
 }
-.board-cards{
+
+.board-cards {
     display: flex;
     height: 100px;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     gap: 10px;
     flex-shrink: 0;
+}
+
+.board-center{
+    display: flex;
+    width: 100%;
+    padding: 50px 0px;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.board-center .card{
+    transform: rotate(30deg);
+
+}
+.card {
+    width: 80px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
 }
