@@ -5,12 +5,19 @@ import Card from "./Card"
 export default function Board(props) {
     const playerCards = props.drawnPlayerCards.map(
         card => {
-            return <Card key={card.id} value={card.value} cardUrl={card.url}/>
+            return <Card value={card.value} cardUrl={card.url}/>
+        }
+    )
+    const croupierCards = props.drawnCroupierCards.map(
+        card => {
+            return <Card value={card.value} cardUrl={card.url}/>
         }
     )
     return (
         <div className="board">
-            {/*<div className="board-cards"><Card cardUrl={playerCards[0].ur}/></div>*/}
+            <div className="board-cards">
+                {croupierCards}
+            </div>
             <div className="board-center">
                 <h1 className="board-title">BLACKJACK</h1>
                 <img className="card" alt="deck" src="./Cards/deck.png"/>
