@@ -42,7 +42,7 @@ body {
     flex-shrink: 0;
 }
 
-.board-center{
+.board-center {
     display: flex;
     width: 100%;
     padding: 50px 0px;
@@ -50,12 +50,55 @@ body {
     align-items: center;
 }
 
-.board-center .card{
+.board-center .card {
     transform: rotate(30deg);
 
 }
+
 .card {
     width: 80px;
     border-radius: 10px;
     box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+main {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 50px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+.buttons-hit{
+    width: 110px;
+    border: none;
+    border-radius: 20px;
+    background: #27C9BF;
+    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.50);
+    color: #1E1E1E;
+    font-size: 36px;
+    font-family: Itim;
+    line-height: 60px;
+    letter-spacing: 15px;
+    cursor: pointer;
+}
+
+.buttons-stand{
+    border: none;
+    width: 195px;
+    border-radius: 20px;
+    background: #27C9BF;
+    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.50);
+    color: #1E1E1E;
+    font-size: 36px;
+    font-family: Itim;
+    line-height: 60px;
+    letter-spacing: 15px;
+    cursor: pointer;
 }
