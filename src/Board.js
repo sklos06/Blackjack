@@ -13,12 +13,14 @@ export default function Board(props) {
             return <Card value={card.value} cardUrl={card.url}/>
         }
     )
+
+
     return (
         <div className="board">
             <div className="board-cards">
                 {croupierCards}
             </div>
-            <p className={"board-value"}>{props.playerValue}</p>
+            <p className={"board-value"}>{props.croupierValue}</p>
             <div className="board-center">
                 <h1 className="board-title">BLACKJACK</h1>
                 <img className="card" alt="deck" src="./Cards/deck.png"/>
