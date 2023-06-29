@@ -53,22 +53,12 @@ export default function App() {
         setPlayerRandomNumber(Math.floor(Math.random() * cardsNumber))
 
     }, [playerCards])
-    
-    React.useEffect(() => {
-        setCardsValuePlayerPlayer(() => {
-            let value = 0;
-            playerCards.forEach(card => value += card.value)
-            return value
-        })
-        setPlayerRandomNumber(Math.floor(Math.random() * cardsNumber))
-
-    }, [croupierCards])
 
 
     return (
         <main>
             <Buttons draw={drawCard}/>
-            <Board drawnPlayerCards={playerCards} drawnCroupierCards={croupierCards}/>
+            <Board drawnPlayerCards={playerCards} drawnCroupierCards={croupierCards} playerValue={cardsValuePlayer}/>
         </main>
     )
 }

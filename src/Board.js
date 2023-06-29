@@ -18,6 +18,7 @@ export default function Board(props) {
             <div className="board-cards">
                 {croupierCards}
             </div>
+            <p className={"board-value"}>{props.playerValue}</p>
             <div className="board-center">
                 <h1 className="board-title">BLACKJACK</h1>
                 <img className="card" alt="deck" src="./Cards/deck.png"/>
@@ -25,6 +26,7 @@ export default function Board(props) {
             <div className="board-cards">
                 {playerCards}
             </div>
+            <p className={"board-value"}>{props.playerValue}</p>
         </div>
     )
 }

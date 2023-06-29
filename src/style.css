@@ -54,7 +54,12 @@ body {
     transform: rotate(30deg);
 
 }
-
+.board-value{
+    color: white;
+    font-size: 35px;
+    font-family: Itim;
+    line-height: 30px;
+}
 .card {
     width: 80px;
     border-radius: 10px;
