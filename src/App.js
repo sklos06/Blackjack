@@ -11,6 +11,10 @@ export default function App() {
     const [cardsValueCroupier, setCardsValueCroupier] = React.useState(0)
     const [playerRandomNumber, setPlayerRandomNumber] = React.useState(Math.floor(Math.random() * cardsNumber))
     const [croupierRandomNumber, setCroupierRandomNumber] = React.useState(Math.floor(Math.random() * cardsNumber))
+    const hitButton = document.getElementById("hit")
+    const standButton = document.getElementById("stand")
+    const style = "filter: blur(q.5px)"
+
     const [playerCards, setPlayerCards] = React.useState([{
         url: cards[playerRandomNumber].url,
         value: cards[playerRandomNumber].value,
@@ -27,7 +31,6 @@ export default function App() {
         value: 0
     }])
 
-
     function drawCard() {
 
         setPlayerCards(oldCards => {
@@ -43,6 +46,7 @@ export default function App() {
     }
 
     function drawCardCroupier() {
+
         setCroupierCards(oldCards => {
             return [
                 ...oldCards,
@@ -53,16 +57,15 @@ export default function App() {
                 }
             ]
         })
+
     }
 
     function stand() {
-        const hit = document.getElementById("hit")
-        const stand = document.getElementById("stand")
-        const style = "filter: blur(2.5px)"
-        hit.style = style
-        hit.disabled = true
-        stand.style = style
-        stand.disabled = true
+        hitButton.style = style
+        hitButton.disabled = true
+        standButton.style = style
+        standButton.disabled = true
+
         setCroupierCards(prevCards => {
             const temporaryArray = prevCards.filter(prev => prev.value !== 0);
             return temporaryArray
@@ -77,7 +80,7 @@ export default function App() {
         })
         setCards(prevCards => {
             const temporaryArray = prevCards.filter(prev => prev.id !== (playerRandomNumber + 1));
-            setCardsNumber(prevCardsNumber =>{
+            setCardsNumber(prevCardsNumber => {
                 return --prevCardsNumber
             })
             return temporaryArray
@@ -85,33 +88,32 @@ export default function App() {
         setPlayerRandomNumber(Math.floor(Math.random() * cardsNumber))
 
     }, [playerCards])
+
     React.useEffect(() => {
         setCardsValueCroupier(() => {
             let value = 0;
             croupierCards.forEach(card => value += card.value)
             return value
         })
-        if ((cardsValueCroupier <= cardsValuePlayer) && (cardsValuePlayer !== 0)) {
-            drawCardCroupier()
-        }
+
         setCards(prevCards => {
             const temporaryArray = prevCards.filter(prev => prev.id !== (playerRandomNumber + 1));
-            setCardsNumber(prevCardsNumber =>{
+            setCardsNumber(prevCardsNumber => {
                 return --prevCardsNumber
             })
             return temporaryArray
         })
 
-
         setCroupierRandomNumber(Math.floor(Math.random() * cardsNumber))
 
     }, [croupierCards])
 
-    React.useEffect(() => {
-        if (cardsValuePlayer > 21) {
 
+    React.useEffect(()=>{
+        if ((cardsValueCroupier <= cardsValuePlayer) && (cardsValuePlayer !== 0)) {
+            drawCardCroupier()
         }
-    }, [cardsValuePlayer, cardsValueCroupier])
+    },[croupierRandomNumber])
 
     return (
         <main>
