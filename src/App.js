@@ -11,9 +11,12 @@ export default function App() {
     const [cardsValueCroupier, setCardsValueCroupier] = React.useState(0)
     const [playerRandomNumber, setPlayerRandomNumber] = React.useState(Math.floor(Math.random() * cardsNumber))
     const [croupierRandomNumber, setCroupierRandomNumber] = React.useState(Math.floor(Math.random() * cardsNumber))
+    const [endPlayerTurn, setEndPlayerTurn] = React.useState(false)
+
+
     const hitButton = document.getElementById("hit")
     const standButton = document.getElementById("stand")
-    const style = "filter: blur(q.5px)"
+    const style = "filter: blur(1.5px)"
 
     const [playerCards, setPlayerCards] = React.useState([{
         url: cards[playerRandomNumber].url,
@@ -32,7 +35,6 @@ export default function App() {
     }])
 
     function drawCard() {
-
         setPlayerCards(oldCards => {
             return [
                 ...oldCards,
@@ -43,10 +45,10 @@ export default function App() {
                 }
             ]
         })
+
     }
 
     function drawCardCroupier() {
-
         setCroupierCards(oldCards => {
             return [
                 ...oldCards,
@@ -65,7 +67,7 @@ export default function App() {
         hitButton.disabled = true
         standButton.style = style
         standButton.disabled = true
-
+        setEndPlayerTurn(true)
         setCroupierCards(prevCards => {
             const temporaryArray = prevCards.filter(prev => prev.value !== 0);
             return temporaryArray
@@ -89,6 +91,13 @@ export default function App() {
 
     }, [playerCards])
 
+    React.useEffect(()=>{
+        if(cardsValuePlayer>21){
+            hitButton.style = style
+            hitButton.disabled = true
+        }
+    },[playerRandomNumber])
+
     React.useEffect(() => {
         setCardsValueCroupier(() => {
             let value = 0;
@@ -109,11 +118,11 @@ export default function App() {
     }, [croupierCards])
 
 
-    React.useEffect(()=>{
-        if ((cardsValueCroupier <= cardsValuePlayer) && (cardsValuePlayer !== 0)) {
+    React.useEffect(() => {
+        if ((cardsValueCroupier!==21) && (cardsValueCroupier <= cardsValuePlayer) && (cardsValuePlayer !== 0) && endPlayerTurn) {
             drawCardCroupier()
         }
-    },[croupierRandomNumber])
+    }, [croupierRandomNumber])
 
     return (
         <main>
