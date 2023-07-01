@@ -2,6 +2,7 @@ import React from "react"
 import Board from "./Board"
 import Buttons from "./Buttons";
 import Outcome from "./Outcome"
+import Confetti from "react-confetti"
 import data from "./data"
 
 
@@ -135,7 +136,7 @@ export default function App() {
             } else if (cardsValuePlayer === cardsValueCroupier) {
                 setResult("Draw!!!")
             } else {
-                setResult("You lost")
+                setResult("You lost!!!")
             }
         }
     },[cardsValueCroupier])
@@ -148,6 +149,7 @@ export default function App() {
 
     return (
         <main>
+            {result==="You won!!!" && <Confetti/>}
             <Buttons draw={drawCard} stand={stand}/>
             <Board
                 drawnPlayerCards={playerCards}

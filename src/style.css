@@ -1,6 +1,5 @@
 * {
     box-sizing: border-box;
-
 }
 
 body {
@@ -69,7 +68,7 @@ body {
 
 main {
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     gap: 50px;
 }
 
@@ -110,8 +109,9 @@ main {
 }
 
 .result{
-    width:200px;
+    width:500px;
     align-self: center;
     color: #e2ebd5;
     font-family: Itim;
+    font-size: 100px;
 }
