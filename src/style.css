@@ -80,8 +80,8 @@ main {
     gap: 50px;
 }
 
-.buttons-hit{
-    width: 110px;
+.buttons-button{
+    width: 105px;
     border: none;
     border-radius: 20px;
     background: #27C9BF;
@@ -93,19 +93,14 @@ main {
     letter-spacing: 15px;
     cursor: pointer;
 }
-
-.buttons-stand{
-    border: none;
-    width: 195px;
-    border-radius: 20px;
-    background: #27C9BF;
-    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.50);
-    color: #1E1E1E;
-    font-size: 36px;
-    font-family: Itim;
-    line-height: 60px;
-    letter-spacing: 15px;
-    cursor: pointer;
+#hit{
+    width: 105px;
+}
+#stand{
+    width: 190px;
+}
+#reset{
+    width: 185px;
 }
 
 .result{
