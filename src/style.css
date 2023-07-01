@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+
 }
 
 body {
@@ -27,7 +28,7 @@ body {
 .board-title {
     color: #1B2732;
     font-size: 48px;
-    font-family: Jua;
+    font-family: Itim;
     line-height: 100px;
     letter-spacing: 12px;
     filter: blur(2.5px);
@@ -106,4 +107,11 @@ main {
     line-height: 60px;
     letter-spacing: 15px;
     cursor: pointer;
+}
+
+.result{
+    width:200px;
+    align-self: center;
+    color: #e2ebd5;
+    font-family: Itim;
 }

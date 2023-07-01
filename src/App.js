@@ -1,6 +1,7 @@
 import React from "react"
 import Board from "./Board"
 import Buttons from "./Buttons";
+import Outcome from "./Outcome"
 import data from "./data"
 
 
@@ -12,6 +13,7 @@ export default function App() {
     const [playerRandomNumber, setPlayerRandomNumber] = React.useState(Math.floor(Math.random() * cardsNumber))
     const [croupierRandomNumber, setCroupierRandomNumber] = React.useState(Math.floor(Math.random() * cardsNumber))
     const [endPlayerTurn, setEndPlayerTurn] = React.useState(false)
+    const [result ,setResult] = React.useState("")
 
 
     const hitButton = document.getElementById("hit")
@@ -110,6 +112,7 @@ export default function App() {
             setCardsNumber(prevCardsNumber => {
                 return --prevCardsNumber
             })
+
             return temporaryArray
         })
 
@@ -133,6 +136,7 @@ export default function App() {
                 playerValue={cardsValuePlayer}
                 croupierValue={cardsValueCroupier}
             />
+            <Outcome score={result}/>
         </main>
     )
 }
