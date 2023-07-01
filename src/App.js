@@ -13,6 +13,7 @@ export default function App() {
     const [playerRandomNumber, setPlayerRandomNumber] = React.useState(Math.floor(Math.random() * cardsNumber))
     const [croupierRandomNumber, setCroupierRandomNumber] = React.useState(Math.floor(Math.random() * cardsNumber))
     const [endPlayerTurn, setEndPlayerTurn] = React.useState(false)
+    const [endCroupierTurn, setEndCroupierTurn] = React.useState(false)
     const [result ,setResult] = React.useState("")
 
 
@@ -61,7 +62,6 @@ export default function App() {
                 }
             ]
         })
-
     }
 
     function stand() {
@@ -97,6 +97,9 @@ export default function App() {
         if(cardsValuePlayer>21){
             hitButton.style = style
             hitButton.disabled = true
+            standButton.style = style
+            standButton.disabled = true
+            setResult("You lost!!!")
         }
     },[playerRandomNumber])
 
@@ -112,14 +115,30 @@ export default function App() {
             setCardsNumber(prevCardsNumber => {
                 return --prevCardsNumber
             })
-
             return temporaryArray
         })
 
-        setCroupierRandomNumber(Math.floor(Math.random() * cardsNumber))
+        setCroupierRandomNumber(()=>{
+           if(cardsValuePlayer>cardsValueCroupier){
+               setEndCroupierTurn(true)
+           }
+           return Math.floor(Math.random() * cardsNumber)
+        })
+
 
     }, [croupierCards])
 
+    React.useEffect(()=>{
+        if(endCroupierTurn){
+            if ((cardsValuePlayer > cardsValueCroupier) || cardsValueCroupier > 21) {
+                setResult("You won!!!")
+            } else if (cardsValuePlayer === cardsValueCroupier) {
+                setResult("Draw!!!")
+            } else {
+                setResult("You lost")
+            }
+        }
+    },[cardsValueCroupier])
 
     React.useEffect(() => {
         if ((cardsValueCroupier!==21) && (cardsValueCroupier <= cardsValuePlayer) && (cardsValuePlayer !== 0) && endPlayerTurn) {
