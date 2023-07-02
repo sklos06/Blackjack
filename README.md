@@ -1,6 +1,6 @@
 Web blackjack game.
 
-[Link text Here](casino-blackjack.netlify.app)
+[Link text Here](https://casino-blackjack.netlify.app)
 
 Check out the game!!!
 
