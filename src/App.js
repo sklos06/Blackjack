@@ -133,7 +133,7 @@ export default function App() {
         if(endCroupierTurn){
             if ((cardsValuePlayer > cardsValueCroupier) || cardsValueCroupier > 21) {
                 setResult("You won!!!")
-            } else if (cardsValuePlayer === cardsValueCroupier) {
+            } else if (cardsValuePlayer === 21 && cardsValueCroupier === 21) {
                 setResult("Draw!!!")
             } else {
                 setResult("You lost!!!")
@@ -143,7 +143,10 @@ export default function App() {
 
     React.useEffect(() => {
         if ((cardsValueCroupier!==21) && (cardsValueCroupier <= cardsValuePlayer) && (cardsValuePlayer !== 0) && endPlayerTurn) {
-            drawCardCroupier()
+
+            setTimeout(() => {
+                drawCardCroupier()
+            },200)
         }
     }, [croupierRandomNumber])
 
