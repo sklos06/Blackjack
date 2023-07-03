@@ -71,10 +71,14 @@ export default function App() {
         standButton.style = style
         standButton.disabled = true
         setEndPlayerTurn(true)
-        setCroupierCards(prevCards => {
-            const temporaryArray = prevCards.filter(prev => prev.value !== 0);
-            return temporaryArray
-        })
+        if(cardsValuePlayer<cardsValueCroupier){
+            setResult("You lost!!!")
+        }else{
+            setCroupierCards(prevCards => {
+                const temporaryArray = prevCards.filter(prev => prev.value !== 0);
+                return temporaryArray
+            })
+        }
     }
 
     React.useEffect(() => {
